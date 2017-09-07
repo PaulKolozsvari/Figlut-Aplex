@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Figlut.Aplex.Desktop.Data.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Figlut_Figlut_Desktop_Data_WebService_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/Figlut.Aplex.Web.Service/Service.asmx</Value>
+    </Setting>
+    <Setting Name="SourceCube_Figlut_Desktop_Data_WebService_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/SourceCube.Figlut.Web.Service/Service.asmx</Value>
+    </Setting>
+    <Setting Name="SourceCube_ClientConfig_Desktop_Data_WebService_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/Figlut.Aplex.Web.Service/Service.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

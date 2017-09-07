@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F91386B5-8D97-4F78-A37C-F5D3BDC60F80}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Figlut.Aplex.Desktop.Controls</RootNamespace>
+    <AssemblyName>Figlut.Aplex.Desktop.Controls</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DeviceConfigControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DeviceConfigControl.designer.cs">
+      <DependentUpon>DeviceConfigControl.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DeviceConfigControl.resx">
+      <DependentUpon>DeviceConfigControl.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Figlut.Aplex.Desktop.AuxilaryUI\Figlut.Aplex.Desktop.AuxilaryUI.csproj">
+      <Project>{77149E76-BAC0-4DD4-905A-2D45B5BC0225}</Project>
+      <Name>Figlut.Aplex.Desktop.AuxilaryUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Figlut.Aplex.Desktop.Data\Figlut.Aplex.Desktop.Data.csproj">
+      <Project>{552CA267-FDD3-43F6-8081-DA4A727F5530}</Project>
+      <Name>Figlut.Aplex.Desktop.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Figlut.Desktop.BaseForms\Figlut.Desktop.BaseForms.csproj">
+      <Project>{296C800D-7340-4F02-BA01-E2E4305DCB27}</Project>
+      <Name>Figlut.Desktop.BaseForms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Figlut.Desktop.Controls\Figlut.Desktop.Controls.csproj">
+      <Project>{96F62BF6-FA7D-4989-A6D6-47A508FCE136}</Project>
+      <Name>Figlut.Desktop.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Figlut.Desktop.Data\Figlut.Desktop.Data.csproj">
+      <Project>{E56EC9A2-D1AA-463B-877D-5F2837C44738}</Project>
+      <Name>Figlut.Desktop.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Figlut.Desktop.Utilities\Figlut.Desktop.Utilities.csproj">
+      <Project>{B90C6532-4A5A-4BE2-89B8-024EC4E24239}</Project>
+      <Name>Figlut.Desktop.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

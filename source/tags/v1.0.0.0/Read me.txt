@@ -1,0 +1,1 @@
+This is the first version of Aplex. Allowing only to manage devices connecting to the server and their customers, users etc.

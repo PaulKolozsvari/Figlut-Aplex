@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="C#" CodeBehind="Service.asmx.cs" Class="Figlut.Aplex.Web.Service.Service" %>

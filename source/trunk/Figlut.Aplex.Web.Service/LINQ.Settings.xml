@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LINQSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ConnectionString>Data Source=PAULKOLOZSVD2AE\SQL2008STANDARD;Initial Catalog=FiglutAplex;Persist Security Info=True;User ID=FiglutAplexUser;Password=password</ConnectionString>
+  <LinqToSQLCommandTimeout>30000</LinqToSQLCommandTimeout>
+</LINQSettings>

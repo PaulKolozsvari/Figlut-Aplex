@@ -1,0 +1,6 @@
+SQL Database Config :
+
+*	SQL Server Database user:
+
+	-	Username : ClientConfigUser
+	-	Password : (L!3nT

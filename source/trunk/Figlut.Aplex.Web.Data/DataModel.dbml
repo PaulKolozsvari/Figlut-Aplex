@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="FiglutAplex" Class="DataModelDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=PAULKOLOZSVD2AE\SQL2008STANDARD;Initial Catalog=FiglutAplex;Persist Security Info=True;User ID=FiglutAplexUser" SettingsObjectName="Figlut.Aplex.Web.Data.Properties.Settings" SettingsPropertyName="FiglutAplexConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Aplex" Member="Aplexes">
+    <Type Name="Aplex">
+      <Column Name="AplexId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="Aplex_DeviceConfigAplex" Member="DeviceConfigAplexes" ThisKey="AplexId" OtherKey="AplexId" Type="DeviceConfigAplex" />
+      <Association Name="Aplex_AplexScreen" Member="AplexScreens" ThisKey="AplexId" OtherKey="AplexId" Type="AplexScreen" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserPermission" Member="UserPermissions">
+    <Type Name="UserPermission">
+      <Column Name="UserPermissionId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PermissionName" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="User_UserPermission" Member="User" AccessModifier="Internal" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AplexControlMapping" Member="AplexControlMappings">
+    <Type Name="AplexControlMapping">
+      <Column Name="StateControlMappingId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="BaseTypeName" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="ControlTypeName" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Customer" Member="Customers">
+    <Type Name="Customer">
+      <Column Name="CustomerId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CompanyName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PhysicalAddress" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="PostalAddress" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ContactName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ContactNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ContactEmail" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Customer_DeviceConfig" Member="DeviceConfigs" ThisKey="CustomerId" OtherKey="CustomerId" Type="DeviceConfig" />
+      <Association Name="Customer_User" Member="Users" ThisKey="CustomerId" OtherKey="CustomerId" Type="User" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DeviceConfig" Member="DeviceConfigs">
+    <Type Name="DeviceConfig">
+      <Column Name="DeviceConfigId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DeviceId" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="ApplicationName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ApplicationWebServiceURL" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="ApplicationReplicationWebServiceURL" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="ClientConfigWebServiceURL" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="LicenseExpiryDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastConnectionDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ActionCount" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="NotifyOnInactivity" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="DeviceConfig_DeviceConfigAction" Member="DeviceConfigActions" ThisKey="DeviceConfigId" OtherKey="DeviceConfigId" Type="DeviceConfigAction" />
+      <Association Name="DeviceConfig_DeviceConfigAplex" Member="DeviceConfigAplexes" ThisKey="DeviceConfigId" OtherKey="DeviceConfigId" Type="DeviceConfigAplex" />
+      <Association Name="Customer_DeviceConfig" Member="Customer" AccessModifier="Internal" ThisKey="CustomerId" OtherKey="CustomerId" Type="Customer" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DeviceConfigAction" Member="DeviceConfigActions">
+    <Type Name="DeviceConfigAction">
+      <Column Name="DeviceConfigActionId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="[Function]" Member="Function" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DeviceId" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="ApplicationName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerCompanyName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Tag" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DeviceConfigId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="DeviceConfig_DeviceConfigAction" Member="DeviceConfig" AccessModifier="Internal" ThisKey="DeviceConfigId" OtherKey="DeviceConfigId" Type="DeviceConfig" IsForeignKey="true" DeleteRule="SET NULL" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DeviceConfigAplex" Member="DeviceConfigAplexes">
+    <Type Name="DeviceConfigAplex">
+      <Column Name="DeviceConfigAplexId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DeviceConfigId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="AplexId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Aplex_DeviceConfigAplex" Member="Aplex" AccessModifier="Internal" ThisKey="AplexId" OtherKey="AplexId" Type="Aplex" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="DeviceConfig_DeviceConfigAplex" Member="DeviceConfig" AccessModifier="Internal" ThisKey="DeviceConfigId" OtherKey="DeviceConfigId" Type="DeviceConfig" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DevicePendingApproval" Member="DevicePendingApprovals">
+    <Type Name="DevicePendingApproval">
+      <Column Name="DevicePendingApprovalId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DeviceId" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="ApplicationName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LatestAttemptDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EmailAction" Member="EmailActions">
+    <Type Name="EmailAction">
+      <Column Name="EmailActionId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ToEmailAddress" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="FromEmailAddress" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Subject" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Body" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="User_EmailAction" Member="User" AccessModifier="Internal" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" DeleteRule="SET NULL" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GlobalVariable" Member="GlobalVariables">
+    <Type Name="GlobalVariable">
+      <Column Name="GlobalVariableId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="VariableName" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="VariableValue" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ServerAction" Member="ServerActions">
+    <Type Name="ServerAction">
+      <Column Name="ServerActionId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="[Function]" Member="Function" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EntityChanged" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FieldChanged" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OriginalValue" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="NewValue" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Association Name="User_ServerAction" Member="User" AccessModifier="Internal" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" DeleteRule="SET NULL" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ServerError" Member="ServerErrors">
+    <Type Name="ServerError">
+      <Column Name="ServerErrorId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ErrorMessage" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Association Name="User_ServerError" Member="User" AccessModifier="Internal" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" DeleteRule="SET NULL" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[User]" Member="Users">
+    <Type Name="User">
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RoleId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Surname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EmailNotifications" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="User_UserPermission" Member="UserPermissions" ThisKey="UserId" OtherKey="UserId" Type="UserPermission" />
+      <Association Name="User_EmailAction" Member="EmailActions" ThisKey="UserId" OtherKey="UserId" Type="EmailAction" />
+      <Association Name="User_ServerAction" Member="ServerActions" ThisKey="UserId" OtherKey="UserId" Type="ServerAction" />
+      <Association Name="User_ServerError" Member="ServerErrors" ThisKey="UserId" OtherKey="UserId" Type="ServerError" />
+      <Association Name="User_AplexDataCell" Member="AplexDataCells" ThisKey="UserId" OtherKey="CreatedByUserId" Type="AplexDataCell" />
+      <Association Name="User_AplexDataCell1" Member="AplexDataCells1" ThisKey="UserId" OtherKey="UpdateByUserId" Type="AplexDataCell" />
+      <Association Name="Customer_User" Member="Customer" AccessModifier="Internal" ThisKey="CustomerId" OtherKey="CustomerId" Type="Customer" IsForeignKey="true" DeleteRule="SET NULL" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AplexDatabase" Member="AplexDatabases">
+    <Type Name="AplexDatabase">
+      <Column Name="AplexDatabaseId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="AplexDatabase_AplexDataTable" Member="AplexDataTables" ThisKey="AplexDatabaseId" OtherKey="AplexDatabaseId" Type="AplexDataTable" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AplexScreen" Member="AplexScreens">
+    <Type Name="AplexScreen">
+      <Column Name="AplexScreenId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="OperationType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AplexId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="AplexScreen_AplexScreenField" Member="AplexScreenFields" ThisKey="AplexScreenId" OtherKey="AplexScreenId" Type="AplexScreenField" />
+      <Association Name="Aplex_AplexScreen" Member="Aplex" AccessModifier="Internal" ThisKey="AplexId" OtherKey="AplexId" Type="Aplex" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AplexScreenField" Member="AplexScreenFields">
+    <Type Name="AplexScreenField">
+      <Column Name="AplexScreenFieldId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="DisplayName" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Mandatory" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Value" Type="System.Object" DbType="Variant" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ValueTypeName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="AplexScreenId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="AplexScreen_AplexScreenField" Member="AplexScreen" AccessModifier="Internal" ThisKey="AplexScreenId" OtherKey="AplexScreenId" Type="AplexScreen" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AplexDataColumn" Member="AplexDataColumns">
+    <Type Name="AplexDataColumn">
+      <Column Name="AplexDataColumnId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="ValueTypeName" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="AplexDataTableId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="AplexDataColumn_AplexDataCell" Member="AplexDataCells" ThisKey="AplexDataColumnId" OtherKey="AplexDataColumnId" Type="AplexDataCell" />
+      <Association Name="AplexDataTable_AplexDataColumn" Member="AplexDataTable" AccessModifier="Internal" ThisKey="AplexDataTableId" OtherKey="AplexDataTableId" Type="AplexDataTable" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AplexDataRow" Member="AplexDataRows">
+    <Type Name="AplexDataRow">
+      <Column Name="AplexDataRowId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AplexDataTableId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="AplexDataRow_AplexDataCell" Member="AplexDataCells" ThisKey="AplexDataRowId" OtherKey="AplexDataRowId" Type="AplexDataCell" />
+      <Association Name="AplexDataTable_AplexDataRow" Member="AplexDataTable" AccessModifier="Internal" ThisKey="AplexDataTableId" OtherKey="AplexDataTableId" Type="AplexDataTable" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AplexDataTable" Member="AplexDataTables">
+    <Type Name="AplexDataTable">
+      <Column Name="AplexDataTableId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="AplexDatabaseId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="AplexDataTable_AplexDataColumn" Member="AplexDataColumns" ThisKey="AplexDataTableId" OtherKey="AplexDataTableId" Type="AplexDataColumn" />
+      <Association Name="AplexDataTable_AplexDataRow" Member="AplexDataRows" ThisKey="AplexDataTableId" OtherKey="AplexDataTableId" Type="AplexDataRow" />
+      <Association Name="AplexDatabase_AplexDataTable" Member="AplexDatabase" AccessModifier="Internal" ThisKey="AplexDatabaseId" OtherKey="AplexDatabaseId" Type="AplexDatabase" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AplexDataCell" Member="AplexDataCells">
+    <Type Name="AplexDataCell">
+      <Column Name="AplexDataCellId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AplexDataColumnId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="AplexDataRowId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Value" Type="System.Object" DbType="Variant" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="UpdateByUserId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="CreatedByUserId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="UpdateByUserName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedByUserName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DateUpdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="AplexDataColumn_AplexDataCell" Member="AplexDataColumn" AccessModifier="Internal" ThisKey="AplexDataColumnId" OtherKey="AplexDataColumnId" Type="AplexDataColumn" IsForeignKey="true" />
+      <Association Name="AplexDataRow_AplexDataCell" Member="AplexDataRow" AccessModifier="Internal" ThisKey="AplexDataRowId" OtherKey="AplexDataRowId" Type="AplexDataRow" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="User_AplexDataCell" Member="User" AccessModifier="Internal" ThisKey="CreatedByUserId" OtherKey="UserId" Type="User" IsForeignKey="true" />
+      <Association Name="User_AplexDataCell1" Member="User1" AccessModifier="Internal" ThisKey="UpdateByUserId" OtherKey="UserId" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

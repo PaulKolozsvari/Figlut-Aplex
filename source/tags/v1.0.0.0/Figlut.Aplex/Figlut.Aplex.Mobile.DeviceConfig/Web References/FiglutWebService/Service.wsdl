@@ -1,0 +1,4232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="GetAllEmailAction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="User">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UserId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RoleId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Surname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateCreated" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmailNotifications" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserPermissions" type="tns:ArrayOfUserPermission" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServerActions" type="tns:ArrayOfServerAction" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServerErrors" type="tns:ArrayOfServerError" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmailActions" type="tns:ArrayOfEmailAction" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfUserPermission">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UserPermission" nillable="true" type="tns:UserPermission" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UserPermission">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UserPermissionId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="PermissionName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateCreated" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfServerAction">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ServerAction" nillable="true" type="tns:ServerAction" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ServerAction">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ServerActionId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateCreated" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Function" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserId" nillable="true" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EntityChanged" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FieldChanged" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OriginalValue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NewValue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comments" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfServerError">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ServerError" nillable="true" type="tns:ServerError" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ServerError">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ServerErrorId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateCreated" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserId" nillable="true" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comments" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEmailAction">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EmailAction" nillable="true" type="tns:EmailAction" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EmailAction">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EmailActionId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="ToEmailAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FromEmailAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Body" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserId" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateCreated" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllEmailActionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllEmailActionResult" type="tns:ServiceFunctionResultOfListOfEmailAction" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceFunctionResultOfListOfEmailAction">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ServiceResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Contents" type="tns:ArrayOfEmailAction" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ServiceResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="tns:ServiceResultCode" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ServiceResultCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="Information" />
+          <s:enumeration value="SpecialInstructions" />
+          <s:enumeration value="Warning" />
+          <s:enumeration value="OperationError" />
+          <s:enumeration value="FatalError" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetTotalEmailActionCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalEmailActionCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTotalEmailActionCountResult" type="tns:ServiceFunctionResultOfInt32" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceFunctionResultOfInt32">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ServiceResult">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Contents" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="ConnectionTest">
+        <s:complexType />
+      </s:element>
+      <s:element name="ConnectionTestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConnectionTestResult" type="tns:ServiceResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrentServerDateTime">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCurrentServerDateTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCurrentServerDateTimeResult" type="tns:ServiceFunctionResultOfDateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceFunctionResultOfDateTime">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ServiceResult">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Contents" type="s:dateTime" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetDefaultPermission">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDefaultPermissionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetDefaultPermissionResult" type="tns:UserPermissionName" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="UserPermissionName">
+        <s:restriction base="s:string">
+          <s:enumeration value="UserManagement" />
+          <s:enumeration value="CustomerManagement" />
+          <s:enumeration value="DeleteCustomer" />
+          <s:enumeration value="GlobalServerSettingsManagement" />
+          <s:enumeration value="DevicesPendingApprovalManagement" />
+          <s:enumeration value="DeviceConfigurationManagement" />
+          <s:enumeration value="ApproveProductionLicense" />
+          <s:enumeration value="DeleteDeviceConfiguration" />
+          <s:enumeration value="AddDeviceConfiguration" />
+          <s:enumeration value="UpdateDeviceConfigurationExpiryDate" />
+          <s:enumeration value="ViewDeviceConfigActions" />
+          <s:enumeration value="ViewServerActions" />
+          <s:enumeration value="ViewServerErrors" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetGlobalVariable">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="globalVariableName" type="tns:GlobalVariableName" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="GlobalVariableName">
+        <s:restriction base="s:string">
+          <s:enumeration value="CompanyName" />
+          <s:enumeration value="CompanyVatRegistrationNumber" />
+          <s:enumeration value="CompanyAddressLine1" />
+          <s:enumeration value="CompanyAddressLine2" />
+          <s:enumeration value="CompanyAddressLine3" />
+          <s:enumeration value="CompanyAddressLine4" />
+          <s:enumeration value="CompanyAddressLine5" />
+          <s:enumeration value="CompanyAddressLine6" />
+          <s:enumeration value="MonetarySymbol" />
+          <s:enumeration value="MaximumTrialDays" />
+          <s:enumeration value="LogActionGetDeviceConfig" />
+          <s:enumeration value="EmailDevicePendingApproval" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetGlobalVariableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGlobalVariableResult" type="tns:ServiceFunctionResultOfGlobalVariable" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceFunctionResultOfGlobalVariable">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ServiceResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Contents" type="tns:GlobalVariable" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GlobalVariable">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="GlobalVariableId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="VariableName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VariableValue" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateCreated" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="roleId" type="tns:UserRoleId" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="UserRoleId">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="Mobile" />
+          <s:enumeration value="Web" />
+          <s:enumeration value="System" />
+          <s:enumeration value="Administrator" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="tns:ServiceFunctionResultOfUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceFunctionResultOfUser">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ServiceResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Contents" type="tns:User" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetUserPermissionsForUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="targetUser" type="tns:User" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserPermissionsForUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserPermissionsForUserResult" type="tns:ServiceFunctionResultOfListOfUserPermission" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceFunctionResultOfListOfUserPermission">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ServiceResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Contents" type="tns:ArrayOfUserPermission" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="SaveUserWithPermissions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usersToSave" type="tns:ArrayOfUser" />
+            <s:element minOccurs="0" maxOccurs="1" name="usersToDelete" type="tns:ArrayOfUser" />
+            <s:element minOccurs="0" maxOccurs="1" name="permissionsToSave" type="tns:ArrayOfUserPermission" />
+            <s:element minOccurs="0" maxOccurs="1" name="permissionsToDelete" type="tns:ArrayOfUserPermission" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveUserWithPermissionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveUserWithPermissionsResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceProcedureResult">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ServiceResult" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetAllCustomerWithStats">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllCustomerWithStatsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllCustomerWithStatsResult" type="tns:ServiceFunctionResultOfListOfCustomer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceFunctionResultOfListOfCustomer">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ServiceResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Contents" type="tns:ArrayOfCustomer" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfCustomer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Customer" nillable="true" type="tns:Customer" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Customer">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CustomerId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PhysicalAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostalAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContactName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContactNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContactEmail" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateCreated" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeviceConfigs" type="tns:ArrayOfDeviceConfig" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActionCount" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDeviceConfig">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DeviceConfig" nillable="true" type="tns:DeviceConfig" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DeviceConfig">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DeviceConfigId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeviceId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationWebServiceURL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationReplicationWebServiceURL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientConfigWebServiceURL" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LicenseExpiryDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastConnectionDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActionCount" nillable="true" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="NotifyOnInactivity" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CustomerId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateCreated" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeviceConfigActions" type="tns:ArrayOfDeviceConfigAction" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerCompanyName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDeviceConfigAction">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DeviceConfigAction" nillable="true" type="tns:DeviceConfigAction" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DeviceConfigAction">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DeviceConfigActionId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateCreated" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Function" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeviceId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerCompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tag" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DeviceConfigId" nillable="true" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllDeviceConfigWithCustomerInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllDeviceConfigWithCustomerInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllDeviceConfigWithCustomerInfoResult" type="tns:ServiceFunctionResultOfListOfDeviceConfig" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceFunctionResultOfListOfDeviceConfig">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ServiceResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Contents" type="tns:ArrayOfDeviceConfig" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetDeviceConfig">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deviceId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="applicationName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDeviceConfigResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDeviceConfigResult" type="tns:ServiceFunctionResultOfDeviceConfig" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceFunctionResultOfDeviceConfig">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ServiceResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Contents" type="tns:DeviceConfig" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="LogDeviceConfigAction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="function" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="deviceId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="applicationName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tag" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogDeviceConfigActionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LogDeviceConfigActionResult" type="tns:ServiceFunctionResultOfDeviceConfigAction" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceFunctionResultOfDeviceConfigAction">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ServiceResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Contents" type="tns:DeviceConfigAction" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="ApproveDevicePendingApproval">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deviceId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="applicationName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="applicationWebServiceURL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="applicationReplicationWebServiceURL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="clientConfigWebServiceURL" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="daysToActivate" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="customer" type="tns:Customer" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApproveDevicePendingApprovalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ApproveDevicePendingApprovalResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDeviceConfig">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deviceId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="applicationName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="applicationWebServiceURL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="applicationReplicationWebServiceURL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FiglutWebServiceURL" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="licenseExpiryDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDeviceConfigResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateDeviceConfigResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDeviceConfigActionByFilters">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deviceId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="applicationName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDeviceConfigActionByFiltersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDeviceConfigActionByFiltersResult" type="tns:ServiceFunctionResultOfListOfDeviceConfigAction" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceFunctionResultOfListOfDeviceConfigAction">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ServiceResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Contents" type="tns:ArrayOfDeviceConfigAction" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetServerActionByFilters">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServerActionByFiltersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetServerActionByFiltersResult" type="tns:ServiceFunctionResultOfListOfServerAction" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceFunctionResultOfListOfServerAction">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ServiceResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Contents" type="tns:ArrayOfServerAction" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetEmailActionByFilters">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmailActionByFiltersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEmailActionByFiltersResult" type="tns:ServiceFunctionResultOfListOfEmailAction" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServerErrorByFilters">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServerErrorByFiltersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetServerErrorByFiltersResult" type="tns:ServiceFunctionResultOfListOfServerError" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceFunctionResultOfListOfServerError">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ServiceResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Contents" type="tns:ArrayOfServerError" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="SaveUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="x" type="tns:ArrayOfUser" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+            <s:element minOccurs="1" maxOccurs="1" name="saveChildren" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveUserResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="x" type="tns:ArrayOfUser" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteUserResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAllUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAllUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteAllUserResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserBySurrogateKey">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="keyValue" />
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserBySurrogateKeyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserBySurrogateKeyResult" type="tns:ServiceFunctionResultOfUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserByField">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fieldName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fieldValue" />
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserByFieldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserByFieldResult" type="tns:ServiceFunctionResultOfListOfUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceFunctionResultOfListOfUser">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ServiceResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Contents" type="tns:ArrayOfUser" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetAllUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllUserResult" type="tns:ServiceFunctionResultOfListOfUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalUserCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalUserCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTotalUserCountResult" type="tns:ServiceFunctionResultOfInt32" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveUserPermission">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="x" type="tns:ArrayOfUserPermission" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+            <s:element minOccurs="1" maxOccurs="1" name="saveChildren" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveUserPermissionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveUserPermissionResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUserPermission">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="x" type="tns:ArrayOfUserPermission" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUserPermissionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteUserPermissionResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAllUserPermission">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAllUserPermissionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteAllUserPermissionResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserPermissionBySurrogateKey">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="keyValue" />
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserPermissionBySurrogateKeyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserPermissionBySurrogateKeyResult" type="tns:ServiceFunctionResultOfUserPermission" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceFunctionResultOfUserPermission">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ServiceResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Contents" type="tns:UserPermission" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetUserPermissionByField">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fieldName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fieldValue" />
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserPermissionByFieldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserPermissionByFieldResult" type="tns:ServiceFunctionResultOfListOfUserPermission" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllUserPermission">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllUserPermissionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllUserPermissionResult" type="tns:ServiceFunctionResultOfListOfUserPermission" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalUserPermissionCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalUserPermissionCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTotalUserPermissionCountResult" type="tns:ServiceFunctionResultOfInt32" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="x" type="tns:ArrayOfCustomer" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+            <s:element minOccurs="1" maxOccurs="1" name="saveChildren" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveCustomerResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="x" type="tns:ArrayOfCustomer" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteCustomerResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAllCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAllCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteAllCustomerResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomerBySurrogateKey">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="keyValue" />
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomerBySurrogateKeyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomerBySurrogateKeyResult" type="tns:ServiceFunctionResultOfCustomer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceFunctionResultOfCustomer">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ServiceResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Contents" type="tns:Customer" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetCustomerByField">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fieldName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fieldValue" />
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomerByFieldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomerByFieldResult" type="tns:ServiceFunctionResultOfListOfCustomer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllCustomerResult" type="tns:ServiceFunctionResultOfListOfCustomer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalCustomerCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalCustomerCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTotalCustomerCountResult" type="tns:ServiceFunctionResultOfInt32" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveDeviceConfig">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="x" type="tns:ArrayOfDeviceConfig" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+            <s:element minOccurs="1" maxOccurs="1" name="saveChildren" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveDeviceConfigResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveDeviceConfigResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDeviceConfig">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="x" type="tns:ArrayOfDeviceConfig" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDeviceConfigResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteDeviceConfigResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAllDeviceConfig">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAllDeviceConfigResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteAllDeviceConfigResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDeviceConfigBySurrogateKey">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="keyValue" />
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDeviceConfigBySurrogateKeyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDeviceConfigBySurrogateKeyResult" type="tns:ServiceFunctionResultOfDeviceConfig" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDeviceConfigByField">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fieldName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fieldValue" />
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDeviceConfigByFieldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDeviceConfigByFieldResult" type="tns:ServiceFunctionResultOfListOfDeviceConfig" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllDeviceConfig">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllDeviceConfigResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllDeviceConfigResult" type="tns:ServiceFunctionResultOfListOfDeviceConfig" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalDeviceConfigCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalDeviceConfigCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTotalDeviceConfigCountResult" type="tns:ServiceFunctionResultOfInt32" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveDeviceConfigAction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="x" type="tns:ArrayOfDeviceConfigAction" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+            <s:element minOccurs="1" maxOccurs="1" name="saveChildren" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveDeviceConfigActionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveDeviceConfigActionResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDeviceConfigAction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="x" type="tns:ArrayOfDeviceConfigAction" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDeviceConfigActionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteDeviceConfigActionResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAllDeviceConfigAction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAllDeviceConfigActionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteAllDeviceConfigActionResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDeviceConfigActionBySurrogateKey">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="keyValue" />
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDeviceConfigActionBySurrogateKeyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDeviceConfigActionBySurrogateKeyResult" type="tns:ServiceFunctionResultOfDeviceConfigAction" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDeviceConfigActionByField">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fieldName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fieldValue" />
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDeviceConfigActionByFieldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDeviceConfigActionByFieldResult" type="tns:ServiceFunctionResultOfListOfDeviceConfigAction" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllDeviceConfigAction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllDeviceConfigActionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllDeviceConfigActionResult" type="tns:ServiceFunctionResultOfListOfDeviceConfigAction" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalDeviceConfigActionCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalDeviceConfigActionCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTotalDeviceConfigActionCountResult" type="tns:ServiceFunctionResultOfInt32" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveDevicePendingApproval">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="x" type="tns:ArrayOfDevicePendingApproval" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+            <s:element minOccurs="1" maxOccurs="1" name="saveChildren" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDevicePendingApproval">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DevicePendingApproval" nillable="true" type="tns:DevicePendingApproval" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DevicePendingApproval">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DevicePendingApprovalId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeviceId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateCreated" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LatestAttemptDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveDevicePendingApprovalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveDevicePendingApprovalResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDevicePendingApproval">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="x" type="tns:ArrayOfDevicePendingApproval" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDevicePendingApprovalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteDevicePendingApprovalResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAllDevicePendingApproval">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAllDevicePendingApprovalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteAllDevicePendingApprovalResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDevicePendingApprovalBySurrogateKey">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="keyValue" />
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDevicePendingApprovalBySurrogateKeyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDevicePendingApprovalBySurrogateKeyResult" type="tns:ServiceFunctionResultOfDevicePendingApproval" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceFunctionResultOfDevicePendingApproval">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ServiceResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Contents" type="tns:DevicePendingApproval" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetDevicePendingApprovalByField">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fieldName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fieldValue" />
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDevicePendingApprovalByFieldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDevicePendingApprovalByFieldResult" type="tns:ServiceFunctionResultOfListOfDevicePendingApproval" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceFunctionResultOfListOfDevicePendingApproval">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ServiceResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Contents" type="tns:ArrayOfDevicePendingApproval" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetAllDevicePendingApproval">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllDevicePendingApprovalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllDevicePendingApprovalResult" type="tns:ServiceFunctionResultOfListOfDevicePendingApproval" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalDevicePendingApprovalCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalDevicePendingApprovalCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTotalDevicePendingApprovalCountResult" type="tns:ServiceFunctionResultOfInt32" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveGlobalVariable">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="x" type="tns:ArrayOfGlobalVariable" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+            <s:element minOccurs="1" maxOccurs="1" name="saveChildren" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGlobalVariable">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GlobalVariable" nillable="true" type="tns:GlobalVariable" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveGlobalVariableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveGlobalVariableResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteGlobalVariable">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="x" type="tns:ArrayOfGlobalVariable" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteGlobalVariableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteGlobalVariableResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAllGlobalVariable">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAllGlobalVariableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteAllGlobalVariableResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGlobalVariableBySurrogateKey">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="keyValue" />
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGlobalVariableBySurrogateKeyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGlobalVariableBySurrogateKeyResult" type="tns:ServiceFunctionResultOfGlobalVariable" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGlobalVariableByField">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fieldName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fieldValue" />
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGlobalVariableByFieldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGlobalVariableByFieldResult" type="tns:ServiceFunctionResultOfListOfGlobalVariable" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceFunctionResultOfListOfGlobalVariable">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ServiceResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Contents" type="tns:ArrayOfGlobalVariable" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetAllGlobalVariable">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllGlobalVariableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllGlobalVariableResult" type="tns:ServiceFunctionResultOfListOfGlobalVariable" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalGlobalVariableCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalGlobalVariableCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTotalGlobalVariableCountResult" type="tns:ServiceFunctionResultOfInt32" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveServerAction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="x" type="tns:ArrayOfServerAction" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+            <s:element minOccurs="1" maxOccurs="1" name="saveChildren" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveServerActionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveServerActionResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteServerAction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="x" type="tns:ArrayOfServerAction" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteServerActionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteServerActionResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAllServerAction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAllServerActionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteAllServerActionResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServerActionBySurrogateKey">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="keyValue" />
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServerActionBySurrogateKeyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetServerActionBySurrogateKeyResult" type="tns:ServiceFunctionResultOfServerAction" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceFunctionResultOfServerAction">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ServiceResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Contents" type="tns:ServerAction" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetServerActionByField">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fieldName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fieldValue" />
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServerActionByFieldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetServerActionByFieldResult" type="tns:ServiceFunctionResultOfListOfServerAction" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllServerAction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllServerActionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllServerActionResult" type="tns:ServiceFunctionResultOfListOfServerAction" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalServerActionCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalServerActionCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTotalServerActionCountResult" type="tns:ServiceFunctionResultOfInt32" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveServerError">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="x" type="tns:ArrayOfServerError" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+            <s:element minOccurs="1" maxOccurs="1" name="saveChildren" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveServerErrorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveServerErrorResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteServerError">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="x" type="tns:ArrayOfServerError" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteServerErrorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteServerErrorResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAllServerError">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAllServerErrorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteAllServerErrorResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServerErrorBySurrogateKey">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="keyValue" />
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServerErrorBySurrogateKeyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetServerErrorBySurrogateKeyResult" type="tns:ServiceFunctionResultOfServerError" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceFunctionResultOfServerError">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ServiceResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Contents" type="tns:ServerError" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetServerErrorByField">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fieldName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fieldValue" />
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServerErrorByFieldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetServerErrorByFieldResult" type="tns:ServiceFunctionResultOfListOfServerError" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllServerError">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllServerErrorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllServerErrorResult" type="tns:ServiceFunctionResultOfListOfServerError" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalServerErrorCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalServerErrorCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTotalServerErrorCountResult" type="tns:ServiceFunctionResultOfInt32" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveEmailAction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="x" type="tns:ArrayOfEmailAction" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+            <s:element minOccurs="1" maxOccurs="1" name="saveChildren" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveEmailActionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveEmailActionResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteEmailAction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="x" type="tns:ArrayOfEmailAction" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteEmailActionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteEmailActionResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAllEmailAction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAllEmailActionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteAllEmailActionResult" type="tns:ServiceProcedureResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmailActionBySurrogateKey">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="keyValue" />
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmailActionBySurrogateKeyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEmailActionBySurrogateKeyResult" type="tns:ServiceFunctionResultOfEmailAction" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceFunctionResultOfEmailAction">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ServiceResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Contents" type="tns:EmailAction" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetEmailActionByField">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fieldName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fieldValue" />
+            <s:element minOccurs="1" maxOccurs="1" name="loadChildren" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmailActionByFieldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEmailActionByFieldResult" type="tns:ServiceFunctionResultOfListOfEmailAction" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAllEmailActionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllEmailAction" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEmailActionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllEmailActionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalEmailActionCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTotalEmailActionCount" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalEmailActionCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTotalEmailActionCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConnectionTestSoapIn">
+    <wsdl:part name="parameters" element="tns:ConnectionTest" />
+  </wsdl:message>
+  <wsdl:message name="ConnectionTestSoapOut">
+    <wsdl:part name="parameters" element="tns:ConnectionTestResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentServerDateTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCurrentServerDateTime" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentServerDateTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCurrentServerDateTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDefaultPermissionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDefaultPermission" />
+  </wsdl:message>
+  <wsdl:message name="GetDefaultPermissionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDefaultPermissionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalVariableSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGlobalVariable" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalVariableSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGlobalVariableResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserPermissionsForUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserPermissionsForUser" />
+  </wsdl:message>
+  <wsdl:message name="GetUserPermissionsForUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserPermissionsForUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveUserWithPermissionsSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveUserWithPermissions" />
+  </wsdl:message>
+  <wsdl:message name="SaveUserWithPermissionsSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveUserWithPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCustomerWithStatsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllCustomerWithStats" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCustomerWithStatsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllCustomerWithStatsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllDeviceConfigWithCustomerInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllDeviceConfigWithCustomerInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetAllDeviceConfigWithCustomerInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllDeviceConfigWithCustomerInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDeviceConfigSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDeviceConfig" />
+  </wsdl:message>
+  <wsdl:message name="GetDeviceConfigSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDeviceConfigResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogDeviceConfigActionSoapIn">
+    <wsdl:part name="parameters" element="tns:LogDeviceConfigAction" />
+  </wsdl:message>
+  <wsdl:message name="LogDeviceConfigActionSoapOut">
+    <wsdl:part name="parameters" element="tns:LogDeviceConfigActionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ApproveDevicePendingApprovalSoapIn">
+    <wsdl:part name="parameters" element="tns:ApproveDevicePendingApproval" />
+  </wsdl:message>
+  <wsdl:message name="ApproveDevicePendingApprovalSoapOut">
+    <wsdl:part name="parameters" element="tns:ApproveDevicePendingApprovalResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDeviceConfigSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateDeviceConfig" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDeviceConfigSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateDeviceConfigResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDeviceConfigActionByFiltersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDeviceConfigActionByFilters" />
+  </wsdl:message>
+  <wsdl:message name="GetDeviceConfigActionByFiltersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDeviceConfigActionByFiltersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServerActionByFiltersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServerActionByFilters" />
+  </wsdl:message>
+  <wsdl:message name="GetServerActionByFiltersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServerActionByFiltersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEmailActionByFiltersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEmailActionByFilters" />
+  </wsdl:message>
+  <wsdl:message name="GetEmailActionByFiltersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEmailActionByFiltersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServerErrorByFiltersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServerErrorByFilters" />
+  </wsdl:message>
+  <wsdl:message name="GetServerErrorByFiltersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServerErrorByFiltersResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveUserSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveUser" />
+  </wsdl:message>
+  <wsdl:message name="SaveUserSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUserSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteUser" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUserSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllUserSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteAllUser" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllUserSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteAllUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserBySurrogateKeySoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserBySurrogateKey" />
+  </wsdl:message>
+  <wsdl:message name="GetUserBySurrogateKeySoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserBySurrogateKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByFieldSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserByField" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByFieldSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserByFieldResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllUser" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalUserCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTotalUserCount" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalUserCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTotalUserCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveUserPermissionSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveUserPermission" />
+  </wsdl:message>
+  <wsdl:message name="SaveUserPermissionSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveUserPermissionResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUserPermissionSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteUserPermission" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUserPermissionSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteUserPermissionResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllUserPermissionSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteAllUserPermission" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllUserPermissionSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteAllUserPermissionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserPermissionBySurrogateKeySoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserPermissionBySurrogateKey" />
+  </wsdl:message>
+  <wsdl:message name="GetUserPermissionBySurrogateKeySoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserPermissionBySurrogateKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserPermissionByFieldSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserPermissionByField" />
+  </wsdl:message>
+  <wsdl:message name="GetUserPermissionByFieldSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserPermissionByFieldResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUserPermissionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllUserPermission" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUserPermissionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllUserPermissionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalUserPermissionCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTotalUserPermissionCount" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalUserPermissionCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTotalUserPermissionCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveCustomer" />
+  </wsdl:message>
+  <wsdl:message name="SaveCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteCustomer" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteAllCustomer" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteAllCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerBySurrogateKeySoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomerBySurrogateKey" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerBySurrogateKeySoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomerBySurrogateKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerByFieldSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomerByField" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerByFieldSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomerByFieldResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllCustomer" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalCustomerCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTotalCustomerCount" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalCustomerCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTotalCustomerCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveDeviceConfigSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveDeviceConfig" />
+  </wsdl:message>
+  <wsdl:message name="SaveDeviceConfigSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveDeviceConfigResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDeviceConfigSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteDeviceConfig" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDeviceConfigSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteDeviceConfigResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllDeviceConfigSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteAllDeviceConfig" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllDeviceConfigSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteAllDeviceConfigResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDeviceConfigBySurrogateKeySoapIn">
+    <wsdl:part name="parameters" element="tns:GetDeviceConfigBySurrogateKey" />
+  </wsdl:message>
+  <wsdl:message name="GetDeviceConfigBySurrogateKeySoapOut">
+    <wsdl:part name="parameters" element="tns:GetDeviceConfigBySurrogateKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDeviceConfigByFieldSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDeviceConfigByField" />
+  </wsdl:message>
+  <wsdl:message name="GetDeviceConfigByFieldSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDeviceConfigByFieldResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllDeviceConfigSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllDeviceConfig" />
+  </wsdl:message>
+  <wsdl:message name="GetAllDeviceConfigSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllDeviceConfigResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalDeviceConfigCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTotalDeviceConfigCount" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalDeviceConfigCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTotalDeviceConfigCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveDeviceConfigActionSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveDeviceConfigAction" />
+  </wsdl:message>
+  <wsdl:message name="SaveDeviceConfigActionSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveDeviceConfigActionResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDeviceConfigActionSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteDeviceConfigAction" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDeviceConfigActionSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteDeviceConfigActionResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllDeviceConfigActionSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteAllDeviceConfigAction" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllDeviceConfigActionSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteAllDeviceConfigActionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDeviceConfigActionBySurrogateKeySoapIn">
+    <wsdl:part name="parameters" element="tns:GetDeviceConfigActionBySurrogateKey" />
+  </wsdl:message>
+  <wsdl:message name="GetDeviceConfigActionBySurrogateKeySoapOut">
+    <wsdl:part name="parameters" element="tns:GetDeviceConfigActionBySurrogateKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDeviceConfigActionByFieldSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDeviceConfigActionByField" />
+  </wsdl:message>
+  <wsdl:message name="GetDeviceConfigActionByFieldSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDeviceConfigActionByFieldResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllDeviceConfigActionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllDeviceConfigAction" />
+  </wsdl:message>
+  <wsdl:message name="GetAllDeviceConfigActionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllDeviceConfigActionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalDeviceConfigActionCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTotalDeviceConfigActionCount" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalDeviceConfigActionCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTotalDeviceConfigActionCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveDevicePendingApprovalSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveDevicePendingApproval" />
+  </wsdl:message>
+  <wsdl:message name="SaveDevicePendingApprovalSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveDevicePendingApprovalResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDevicePendingApprovalSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteDevicePendingApproval" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDevicePendingApprovalSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteDevicePendingApprovalResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllDevicePendingApprovalSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteAllDevicePendingApproval" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllDevicePendingApprovalSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteAllDevicePendingApprovalResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDevicePendingApprovalBySurrogateKeySoapIn">
+    <wsdl:part name="parameters" element="tns:GetDevicePendingApprovalBySurrogateKey" />
+  </wsdl:message>
+  <wsdl:message name="GetDevicePendingApprovalBySurrogateKeySoapOut">
+    <wsdl:part name="parameters" element="tns:GetDevicePendingApprovalBySurrogateKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDevicePendingApprovalByFieldSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDevicePendingApprovalByField" />
+  </wsdl:message>
+  <wsdl:message name="GetDevicePendingApprovalByFieldSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDevicePendingApprovalByFieldResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllDevicePendingApprovalSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllDevicePendingApproval" />
+  </wsdl:message>
+  <wsdl:message name="GetAllDevicePendingApprovalSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllDevicePendingApprovalResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalDevicePendingApprovalCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTotalDevicePendingApprovalCount" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalDevicePendingApprovalCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTotalDevicePendingApprovalCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveGlobalVariableSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveGlobalVariable" />
+  </wsdl:message>
+  <wsdl:message name="SaveGlobalVariableSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveGlobalVariableResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGlobalVariableSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteGlobalVariable" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGlobalVariableSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteGlobalVariableResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllGlobalVariableSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteAllGlobalVariable" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllGlobalVariableSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteAllGlobalVariableResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalVariableBySurrogateKeySoapIn">
+    <wsdl:part name="parameters" element="tns:GetGlobalVariableBySurrogateKey" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalVariableBySurrogateKeySoapOut">
+    <wsdl:part name="parameters" element="tns:GetGlobalVariableBySurrogateKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalVariableByFieldSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGlobalVariableByField" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalVariableByFieldSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGlobalVariableByFieldResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllGlobalVariableSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllGlobalVariable" />
+  </wsdl:message>
+  <wsdl:message name="GetAllGlobalVariableSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllGlobalVariableResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalGlobalVariableCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTotalGlobalVariableCount" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalGlobalVariableCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTotalGlobalVariableCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveServerActionSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveServerAction" />
+  </wsdl:message>
+  <wsdl:message name="SaveServerActionSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveServerActionResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteServerActionSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteServerAction" />
+  </wsdl:message>
+  <wsdl:message name="DeleteServerActionSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteServerActionResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllServerActionSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteAllServerAction" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllServerActionSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteAllServerActionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServerActionBySurrogateKeySoapIn">
+    <wsdl:part name="parameters" element="tns:GetServerActionBySurrogateKey" />
+  </wsdl:message>
+  <wsdl:message name="GetServerActionBySurrogateKeySoapOut">
+    <wsdl:part name="parameters" element="tns:GetServerActionBySurrogateKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServerActionByFieldSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServerActionByField" />
+  </wsdl:message>
+  <wsdl:message name="GetServerActionByFieldSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServerActionByFieldResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllServerActionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllServerAction" />
+  </wsdl:message>
+  <wsdl:message name="GetAllServerActionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllServerActionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalServerActionCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTotalServerActionCount" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalServerActionCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTotalServerActionCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveServerErrorSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveServerError" />
+  </wsdl:message>
+  <wsdl:message name="SaveServerErrorSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveServerErrorResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteServerErrorSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteServerError" />
+  </wsdl:message>
+  <wsdl:message name="DeleteServerErrorSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteServerErrorResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllServerErrorSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteAllServerError" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllServerErrorSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteAllServerErrorResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServerErrorBySurrogateKeySoapIn">
+    <wsdl:part name="parameters" element="tns:GetServerErrorBySurrogateKey" />
+  </wsdl:message>
+  <wsdl:message name="GetServerErrorBySurrogateKeySoapOut">
+    <wsdl:part name="parameters" element="tns:GetServerErrorBySurrogateKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServerErrorByFieldSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServerErrorByField" />
+  </wsdl:message>
+  <wsdl:message name="GetServerErrorByFieldSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServerErrorByFieldResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllServerErrorSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllServerError" />
+  </wsdl:message>
+  <wsdl:message name="GetAllServerErrorSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllServerErrorResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalServerErrorCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTotalServerErrorCount" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalServerErrorCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTotalServerErrorCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveEmailActionSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveEmailAction" />
+  </wsdl:message>
+  <wsdl:message name="SaveEmailActionSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveEmailActionResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteEmailActionSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteEmailAction" />
+  </wsdl:message>
+  <wsdl:message name="DeleteEmailActionSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteEmailActionResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllEmailActionSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteAllEmailAction" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllEmailActionSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteAllEmailActionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEmailActionBySurrogateKeySoapIn">
+    <wsdl:part name="parameters" element="tns:GetEmailActionBySurrogateKey" />
+  </wsdl:message>
+  <wsdl:message name="GetEmailActionBySurrogateKeySoapOut">
+    <wsdl:part name="parameters" element="tns:GetEmailActionBySurrogateKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEmailActionByFieldSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEmailActionByField" />
+  </wsdl:message>
+  <wsdl:message name="GetEmailActionByFieldSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEmailActionByFieldResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="GetAllEmailAction">
+      <wsdl:input message="tns:GetAllEmailActionSoapIn" />
+      <wsdl:output message="tns:GetAllEmailActionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalEmailActionCount">
+      <wsdl:input message="tns:GetTotalEmailActionCountSoapIn" />
+      <wsdl:output message="tns:GetTotalEmailActionCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionTest">
+      <wsdl:input message="tns:ConnectionTestSoapIn" />
+      <wsdl:output message="tns:ConnectionTestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentServerDateTime">
+      <wsdl:input message="tns:GetCurrentServerDateTimeSoapIn" />
+      <wsdl:output message="tns:GetCurrentServerDateTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDefaultPermission">
+      <wsdl:input message="tns:GetDefaultPermissionSoapIn" />
+      <wsdl:output message="tns:GetDefaultPermissionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalVariable">
+      <wsdl:input message="tns:GetGlobalVariableSoapIn" />
+      <wsdl:output message="tns:GetGlobalVariableSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPermissionsForUser">
+      <wsdl:input message="tns:GetUserPermissionsForUserSoapIn" />
+      <wsdl:output message="tns:GetUserPermissionsForUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveUserWithPermissions">
+      <wsdl:input message="tns:SaveUserWithPermissionsSoapIn" />
+      <wsdl:output message="tns:SaveUserWithPermissionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomerWithStats">
+      <wsdl:input message="tns:GetAllCustomerWithStatsSoapIn" />
+      <wsdl:output message="tns:GetAllCustomerWithStatsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDeviceConfigWithCustomerInfo">
+      <wsdl:input message="tns:GetAllDeviceConfigWithCustomerInfoSoapIn" />
+      <wsdl:output message="tns:GetAllDeviceConfigWithCustomerInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeviceConfig">
+      <wsdl:input message="tns:GetDeviceConfigSoapIn" />
+      <wsdl:output message="tns:GetDeviceConfigSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogDeviceConfigAction">
+      <wsdl:input message="tns:LogDeviceConfigActionSoapIn" />
+      <wsdl:output message="tns:LogDeviceConfigActionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ApproveDevicePendingApproval">
+      <wsdl:input message="tns:ApproveDevicePendingApprovalSoapIn" />
+      <wsdl:output message="tns:ApproveDevicePendingApprovalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDeviceConfig">
+      <wsdl:input message="tns:UpdateDeviceConfigSoapIn" />
+      <wsdl:output message="tns:UpdateDeviceConfigSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeviceConfigActionByFilters">
+      <wsdl:input message="tns:GetDeviceConfigActionByFiltersSoapIn" />
+      <wsdl:output message="tns:GetDeviceConfigActionByFiltersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServerActionByFilters">
+      <wsdl:input message="tns:GetServerActionByFiltersSoapIn" />
+      <wsdl:output message="tns:GetServerActionByFiltersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailActionByFilters">
+      <wsdl:input message="tns:GetEmailActionByFiltersSoapIn" />
+      <wsdl:output message="tns:GetEmailActionByFiltersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServerErrorByFilters">
+      <wsdl:input message="tns:GetServerErrorByFiltersSoapIn" />
+      <wsdl:output message="tns:GetServerErrorByFiltersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveUser">
+      <wsdl:input message="tns:SaveUserSoapIn" />
+      <wsdl:output message="tns:SaveUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <wsdl:input message="tns:DeleteUserSoapIn" />
+      <wsdl:output message="tns:DeleteUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllUser">
+      <wsdl:input message="tns:DeleteAllUserSoapIn" />
+      <wsdl:output message="tns:DeleteAllUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserBySurrogateKey">
+      <wsdl:input message="tns:GetUserBySurrogateKeySoapIn" />
+      <wsdl:output message="tns:GetUserBySurrogateKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByField">
+      <wsdl:input message="tns:GetUserByFieldSoapIn" />
+      <wsdl:output message="tns:GetUserByFieldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUser">
+      <wsdl:input message="tns:GetAllUserSoapIn" />
+      <wsdl:output message="tns:GetAllUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalUserCount">
+      <wsdl:input message="tns:GetTotalUserCountSoapIn" />
+      <wsdl:output message="tns:GetTotalUserCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveUserPermission">
+      <wsdl:input message="tns:SaveUserPermissionSoapIn" />
+      <wsdl:output message="tns:SaveUserPermissionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUserPermission">
+      <wsdl:input message="tns:DeleteUserPermissionSoapIn" />
+      <wsdl:output message="tns:DeleteUserPermissionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllUserPermission">
+      <wsdl:input message="tns:DeleteAllUserPermissionSoapIn" />
+      <wsdl:output message="tns:DeleteAllUserPermissionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPermissionBySurrogateKey">
+      <wsdl:input message="tns:GetUserPermissionBySurrogateKeySoapIn" />
+      <wsdl:output message="tns:GetUserPermissionBySurrogateKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPermissionByField">
+      <wsdl:input message="tns:GetUserPermissionByFieldSoapIn" />
+      <wsdl:output message="tns:GetUserPermissionByFieldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUserPermission">
+      <wsdl:input message="tns:GetAllUserPermissionSoapIn" />
+      <wsdl:output message="tns:GetAllUserPermissionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalUserPermissionCount">
+      <wsdl:input message="tns:GetTotalUserPermissionCountSoapIn" />
+      <wsdl:output message="tns:GetTotalUserPermissionCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveCustomer">
+      <wsdl:input message="tns:SaveCustomerSoapIn" />
+      <wsdl:output message="tns:SaveCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCustomer">
+      <wsdl:input message="tns:DeleteCustomerSoapIn" />
+      <wsdl:output message="tns:DeleteCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllCustomer">
+      <wsdl:input message="tns:DeleteAllCustomerSoapIn" />
+      <wsdl:output message="tns:DeleteAllCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerBySurrogateKey">
+      <wsdl:input message="tns:GetCustomerBySurrogateKeySoapIn" />
+      <wsdl:output message="tns:GetCustomerBySurrogateKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerByField">
+      <wsdl:input message="tns:GetCustomerByFieldSoapIn" />
+      <wsdl:output message="tns:GetCustomerByFieldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomer">
+      <wsdl:input message="tns:GetAllCustomerSoapIn" />
+      <wsdl:output message="tns:GetAllCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalCustomerCount">
+      <wsdl:input message="tns:GetTotalCustomerCountSoapIn" />
+      <wsdl:output message="tns:GetTotalCustomerCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveDeviceConfig">
+      <wsdl:input message="tns:SaveDeviceConfigSoapIn" />
+      <wsdl:output message="tns:SaveDeviceConfigSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDeviceConfig">
+      <wsdl:input message="tns:DeleteDeviceConfigSoapIn" />
+      <wsdl:output message="tns:DeleteDeviceConfigSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllDeviceConfig">
+      <wsdl:input message="tns:DeleteAllDeviceConfigSoapIn" />
+      <wsdl:output message="tns:DeleteAllDeviceConfigSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeviceConfigBySurrogateKey">
+      <wsdl:input message="tns:GetDeviceConfigBySurrogateKeySoapIn" />
+      <wsdl:output message="tns:GetDeviceConfigBySurrogateKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeviceConfigByField">
+      <wsdl:input message="tns:GetDeviceConfigByFieldSoapIn" />
+      <wsdl:output message="tns:GetDeviceConfigByFieldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDeviceConfig">
+      <wsdl:input message="tns:GetAllDeviceConfigSoapIn" />
+      <wsdl:output message="tns:GetAllDeviceConfigSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalDeviceConfigCount">
+      <wsdl:input message="tns:GetTotalDeviceConfigCountSoapIn" />
+      <wsdl:output message="tns:GetTotalDeviceConfigCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveDeviceConfigAction">
+      <wsdl:input message="tns:SaveDeviceConfigActionSoapIn" />
+      <wsdl:output message="tns:SaveDeviceConfigActionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDeviceConfigAction">
+      <wsdl:input message="tns:DeleteDeviceConfigActionSoapIn" />
+      <wsdl:output message="tns:DeleteDeviceConfigActionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllDeviceConfigAction">
+      <wsdl:input message="tns:DeleteAllDeviceConfigActionSoapIn" />
+      <wsdl:output message="tns:DeleteAllDeviceConfigActionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeviceConfigActionBySurrogateKey">
+      <wsdl:input message="tns:GetDeviceConfigActionBySurrogateKeySoapIn" />
+      <wsdl:output message="tns:GetDeviceConfigActionBySurrogateKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeviceConfigActionByField">
+      <wsdl:input message="tns:GetDeviceConfigActionByFieldSoapIn" />
+      <wsdl:output message="tns:GetDeviceConfigActionByFieldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDeviceConfigAction">
+      <wsdl:input message="tns:GetAllDeviceConfigActionSoapIn" />
+      <wsdl:output message="tns:GetAllDeviceConfigActionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalDeviceConfigActionCount">
+      <wsdl:input message="tns:GetTotalDeviceConfigActionCountSoapIn" />
+      <wsdl:output message="tns:GetTotalDeviceConfigActionCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveDevicePendingApproval">
+      <wsdl:input message="tns:SaveDevicePendingApprovalSoapIn" />
+      <wsdl:output message="tns:SaveDevicePendingApprovalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDevicePendingApproval">
+      <wsdl:input message="tns:DeleteDevicePendingApprovalSoapIn" />
+      <wsdl:output message="tns:DeleteDevicePendingApprovalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllDevicePendingApproval">
+      <wsdl:input message="tns:DeleteAllDevicePendingApprovalSoapIn" />
+      <wsdl:output message="tns:DeleteAllDevicePendingApprovalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDevicePendingApprovalBySurrogateKey">
+      <wsdl:input message="tns:GetDevicePendingApprovalBySurrogateKeySoapIn" />
+      <wsdl:output message="tns:GetDevicePendingApprovalBySurrogateKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDevicePendingApprovalByField">
+      <wsdl:input message="tns:GetDevicePendingApprovalByFieldSoapIn" />
+      <wsdl:output message="tns:GetDevicePendingApprovalByFieldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDevicePendingApproval">
+      <wsdl:input message="tns:GetAllDevicePendingApprovalSoapIn" />
+      <wsdl:output message="tns:GetAllDevicePendingApprovalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalDevicePendingApprovalCount">
+      <wsdl:input message="tns:GetTotalDevicePendingApprovalCountSoapIn" />
+      <wsdl:output message="tns:GetTotalDevicePendingApprovalCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveGlobalVariable">
+      <wsdl:input message="tns:SaveGlobalVariableSoapIn" />
+      <wsdl:output message="tns:SaveGlobalVariableSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGlobalVariable">
+      <wsdl:input message="tns:DeleteGlobalVariableSoapIn" />
+      <wsdl:output message="tns:DeleteGlobalVariableSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllGlobalVariable">
+      <wsdl:input message="tns:DeleteAllGlobalVariableSoapIn" />
+      <wsdl:output message="tns:DeleteAllGlobalVariableSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalVariableBySurrogateKey">
+      <wsdl:input message="tns:GetGlobalVariableBySurrogateKeySoapIn" />
+      <wsdl:output message="tns:GetGlobalVariableBySurrogateKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalVariableByField">
+      <wsdl:input message="tns:GetGlobalVariableByFieldSoapIn" />
+      <wsdl:output message="tns:GetGlobalVariableByFieldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllGlobalVariable">
+      <wsdl:input message="tns:GetAllGlobalVariableSoapIn" />
+      <wsdl:output message="tns:GetAllGlobalVariableSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalGlobalVariableCount">
+      <wsdl:input message="tns:GetTotalGlobalVariableCountSoapIn" />
+      <wsdl:output message="tns:GetTotalGlobalVariableCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveServerAction">
+      <wsdl:input message="tns:SaveServerActionSoapIn" />
+      <wsdl:output message="tns:SaveServerActionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteServerAction">
+      <wsdl:input message="tns:DeleteServerActionSoapIn" />
+      <wsdl:output message="tns:DeleteServerActionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllServerAction">
+      <wsdl:input message="tns:DeleteAllServerActionSoapIn" />
+      <wsdl:output message="tns:DeleteAllServerActionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServerActionBySurrogateKey">
+      <wsdl:input message="tns:GetServerActionBySurrogateKeySoapIn" />
+      <wsdl:output message="tns:GetServerActionBySurrogateKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServerActionByField">
+      <wsdl:input message="tns:GetServerActionByFieldSoapIn" />
+      <wsdl:output message="tns:GetServerActionByFieldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllServerAction">
+      <wsdl:input message="tns:GetAllServerActionSoapIn" />
+      <wsdl:output message="tns:GetAllServerActionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalServerActionCount">
+      <wsdl:input message="tns:GetTotalServerActionCountSoapIn" />
+      <wsdl:output message="tns:GetTotalServerActionCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveServerError">
+      <wsdl:input message="tns:SaveServerErrorSoapIn" />
+      <wsdl:output message="tns:SaveServerErrorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteServerError">
+      <wsdl:input message="tns:DeleteServerErrorSoapIn" />
+      <wsdl:output message="tns:DeleteServerErrorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllServerError">
+      <wsdl:input message="tns:DeleteAllServerErrorSoapIn" />
+      <wsdl:output message="tns:DeleteAllServerErrorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServerErrorBySurrogateKey">
+      <wsdl:input message="tns:GetServerErrorBySurrogateKeySoapIn" />
+      <wsdl:output message="tns:GetServerErrorBySurrogateKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServerErrorByField">
+      <wsdl:input message="tns:GetServerErrorByFieldSoapIn" />
+      <wsdl:output message="tns:GetServerErrorByFieldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllServerError">
+      <wsdl:input message="tns:GetAllServerErrorSoapIn" />
+      <wsdl:output message="tns:GetAllServerErrorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalServerErrorCount">
+      <wsdl:input message="tns:GetTotalServerErrorCountSoapIn" />
+      <wsdl:output message="tns:GetTotalServerErrorCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveEmailAction">
+      <wsdl:input message="tns:SaveEmailActionSoapIn" />
+      <wsdl:output message="tns:SaveEmailActionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEmailAction">
+      <wsdl:input message="tns:DeleteEmailActionSoapIn" />
+      <wsdl:output message="tns:DeleteEmailActionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllEmailAction">
+      <wsdl:input message="tns:DeleteAllEmailActionSoapIn" />
+      <wsdl:output message="tns:DeleteAllEmailActionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailActionBySurrogateKey">
+      <wsdl:input message="tns:GetEmailActionBySurrogateKeySoapIn" />
+      <wsdl:output message="tns:GetEmailActionBySurrogateKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailActionByField">
+      <wsdl:input message="tns:GetEmailActionByFieldSoapIn" />
+      <wsdl:output message="tns:GetEmailActionByFieldSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllEmailAction">
+      <soap:operation soapAction="http://tempuri.org/GetAllEmailAction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalEmailActionCount">
+      <soap:operation soapAction="http://tempuri.org/GetTotalEmailActionCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionTest">
+      <soap:operation soapAction="http://tempuri.org/ConnectionTest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentServerDateTime">
+      <soap:operation soapAction="http://tempuri.org/GetCurrentServerDateTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDefaultPermission">
+      <soap:operation soapAction="http://tempuri.org/GetDefaultPermission" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalVariable">
+      <soap:operation soapAction="http://tempuri.org/GetGlobalVariable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPermissionsForUser">
+      <soap:operation soapAction="http://tempuri.org/GetUserPermissionsForUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveUserWithPermissions">
+      <soap:operation soapAction="http://tempuri.org/SaveUserWithPermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomerWithStats">
+      <soap:operation soapAction="http://tempuri.org/GetAllCustomerWithStats" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDeviceConfigWithCustomerInfo">
+      <soap:operation soapAction="http://tempuri.org/GetAllDeviceConfigWithCustomerInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeviceConfig">
+      <soap:operation soapAction="http://tempuri.org/GetDeviceConfig" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogDeviceConfigAction">
+      <soap:operation soapAction="http://tempuri.org/LogDeviceConfigAction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveDevicePendingApproval">
+      <soap:operation soapAction="http://tempuri.org/ApproveDevicePendingApproval" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDeviceConfig">
+      <soap:operation soapAction="http://tempuri.org/UpdateDeviceConfig" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeviceConfigActionByFilters">
+      <soap:operation soapAction="http://tempuri.org/GetDeviceConfigActionByFilters" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerActionByFilters">
+      <soap:operation soapAction="http://tempuri.org/GetServerActionByFilters" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailActionByFilters">
+      <soap:operation soapAction="http://tempuri.org/GetEmailActionByFilters" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerErrorByFilters">
+      <soap:operation soapAction="http://tempuri.org/GetServerErrorByFilters" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveUser">
+      <soap:operation soapAction="http://tempuri.org/SaveUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <soap:operation soapAction="http://tempuri.org/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllUser">
+      <soap:operation soapAction="http://tempuri.org/DeleteAllUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserBySurrogateKey">
+      <soap:operation soapAction="http://tempuri.org/GetUserBySurrogateKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByField">
+      <soap:operation soapAction="http://tempuri.org/GetUserByField" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUser">
+      <soap:operation soapAction="http://tempuri.org/GetAllUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalUserCount">
+      <soap:operation soapAction="http://tempuri.org/GetTotalUserCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveUserPermission">
+      <soap:operation soapAction="http://tempuri.org/SaveUserPermission" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUserPermission">
+      <soap:operation soapAction="http://tempuri.org/DeleteUserPermission" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllUserPermission">
+      <soap:operation soapAction="http://tempuri.org/DeleteAllUserPermission" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPermissionBySurrogateKey">
+      <soap:operation soapAction="http://tempuri.org/GetUserPermissionBySurrogateKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPermissionByField">
+      <soap:operation soapAction="http://tempuri.org/GetUserPermissionByField" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUserPermission">
+      <soap:operation soapAction="http://tempuri.org/GetAllUserPermission" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalUserPermissionCount">
+      <soap:operation soapAction="http://tempuri.org/GetTotalUserPermissionCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCustomer">
+      <soap:operation soapAction="http://tempuri.org/SaveCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCustomer">
+      <soap:operation soapAction="http://tempuri.org/DeleteCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllCustomer">
+      <soap:operation soapAction="http://tempuri.org/DeleteAllCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerBySurrogateKey">
+      <soap:operation soapAction="http://tempuri.org/GetCustomerBySurrogateKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerByField">
+      <soap:operation soapAction="http://tempuri.org/GetCustomerByField" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomer">
+      <soap:operation soapAction="http://tempuri.org/GetAllCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalCustomerCount">
+      <soap:operation soapAction="http://tempuri.org/GetTotalCustomerCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDeviceConfig">
+      <soap:operation soapAction="http://tempuri.org/SaveDeviceConfig" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDeviceConfig">
+      <soap:operation soapAction="http://tempuri.org/DeleteDeviceConfig" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllDeviceConfig">
+      <soap:operation soapAction="http://tempuri.org/DeleteAllDeviceConfig" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeviceConfigBySurrogateKey">
+      <soap:operation soapAction="http://tempuri.org/GetDeviceConfigBySurrogateKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeviceConfigByField">
+      <soap:operation soapAction="http://tempuri.org/GetDeviceConfigByField" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDeviceConfig">
+      <soap:operation soapAction="http://tempuri.org/GetAllDeviceConfig" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalDeviceConfigCount">
+      <soap:operation soapAction="http://tempuri.org/GetTotalDeviceConfigCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDeviceConfigAction">
+      <soap:operation soapAction="http://tempuri.org/SaveDeviceConfigAction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDeviceConfigAction">
+      <soap:operation soapAction="http://tempuri.org/DeleteDeviceConfigAction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllDeviceConfigAction">
+      <soap:operation soapAction="http://tempuri.org/DeleteAllDeviceConfigAction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeviceConfigActionBySurrogateKey">
+      <soap:operation soapAction="http://tempuri.org/GetDeviceConfigActionBySurrogateKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeviceConfigActionByField">
+      <soap:operation soapAction="http://tempuri.org/GetDeviceConfigActionByField" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDeviceConfigAction">
+      <soap:operation soapAction="http://tempuri.org/GetAllDeviceConfigAction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalDeviceConfigActionCount">
+      <soap:operation soapAction="http://tempuri.org/GetTotalDeviceConfigActionCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDevicePendingApproval">
+      <soap:operation soapAction="http://tempuri.org/SaveDevicePendingApproval" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDevicePendingApproval">
+      <soap:operation soapAction="http://tempuri.org/DeleteDevicePendingApproval" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllDevicePendingApproval">
+      <soap:operation soapAction="http://tempuri.org/DeleteAllDevicePendingApproval" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDevicePendingApprovalBySurrogateKey">
+      <soap:operation soapAction="http://tempuri.org/GetDevicePendingApprovalBySurrogateKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDevicePendingApprovalByField">
+      <soap:operation soapAction="http://tempuri.org/GetDevicePendingApprovalByField" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDevicePendingApproval">
+      <soap:operation soapAction="http://tempuri.org/GetAllDevicePendingApproval" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalDevicePendingApprovalCount">
+      <soap:operation soapAction="http://tempuri.org/GetTotalDevicePendingApprovalCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveGlobalVariable">
+      <soap:operation soapAction="http://tempuri.org/SaveGlobalVariable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGlobalVariable">
+      <soap:operation soapAction="http://tempuri.org/DeleteGlobalVariable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllGlobalVariable">
+      <soap:operation soapAction="http://tempuri.org/DeleteAllGlobalVariable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalVariableBySurrogateKey">
+      <soap:operation soapAction="http://tempuri.org/GetGlobalVariableBySurrogateKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalVariableByField">
+      <soap:operation soapAction="http://tempuri.org/GetGlobalVariableByField" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllGlobalVariable">
+      <soap:operation soapAction="http://tempuri.org/GetAllGlobalVariable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalGlobalVariableCount">
+      <soap:operation soapAction="http://tempuri.org/GetTotalGlobalVariableCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveServerAction">
+      <soap:operation soapAction="http://tempuri.org/SaveServerAction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteServerAction">
+      <soap:operation soapAction="http://tempuri.org/DeleteServerAction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllServerAction">
+      <soap:operation soapAction="http://tempuri.org/DeleteAllServerAction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerActionBySurrogateKey">
+      <soap:operation soapAction="http://tempuri.org/GetServerActionBySurrogateKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerActionByField">
+      <soap:operation soapAction="http://tempuri.org/GetServerActionByField" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllServerAction">
+      <soap:operation soapAction="http://tempuri.org/GetAllServerAction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalServerActionCount">
+      <soap:operation soapAction="http://tempuri.org/GetTotalServerActionCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveServerError">
+      <soap:operation soapAction="http://tempuri.org/SaveServerError" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteServerError">
+      <soap:operation soapAction="http://tempuri.org/DeleteServerError" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllServerError">
+      <soap:operation soapAction="http://tempuri.org/DeleteAllServerError" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerErrorBySurrogateKey">
+      <soap:operation soapAction="http://tempuri.org/GetServerErrorBySurrogateKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerErrorByField">
+      <soap:operation soapAction="http://tempuri.org/GetServerErrorByField" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllServerError">
+      <soap:operation soapAction="http://tempuri.org/GetAllServerError" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalServerErrorCount">
+      <soap:operation soapAction="http://tempuri.org/GetTotalServerErrorCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveEmailAction">
+      <soap:operation soapAction="http://tempuri.org/SaveEmailAction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEmailAction">
+      <soap:operation soapAction="http://tempuri.org/DeleteEmailAction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllEmailAction">
+      <soap:operation soapAction="http://tempuri.org/DeleteAllEmailAction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailActionBySurrogateKey">
+      <soap:operation soapAction="http://tempuri.org/GetEmailActionBySurrogateKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailActionByField">
+      <soap:operation soapAction="http://tempuri.org/GetEmailActionByField" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllEmailAction">
+      <soap12:operation soapAction="http://tempuri.org/GetAllEmailAction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalEmailActionCount">
+      <soap12:operation soapAction="http://tempuri.org/GetTotalEmailActionCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionTest">
+      <soap12:operation soapAction="http://tempuri.org/ConnectionTest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentServerDateTime">
+      <soap12:operation soapAction="http://tempuri.org/GetCurrentServerDateTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDefaultPermission">
+      <soap12:operation soapAction="http://tempuri.org/GetDefaultPermission" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalVariable">
+      <soap12:operation soapAction="http://tempuri.org/GetGlobalVariable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPermissionsForUser">
+      <soap12:operation soapAction="http://tempuri.org/GetUserPermissionsForUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveUserWithPermissions">
+      <soap12:operation soapAction="http://tempuri.org/SaveUserWithPermissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomerWithStats">
+      <soap12:operation soapAction="http://tempuri.org/GetAllCustomerWithStats" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDeviceConfigWithCustomerInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetAllDeviceConfigWithCustomerInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeviceConfig">
+      <soap12:operation soapAction="http://tempuri.org/GetDeviceConfig" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogDeviceConfigAction">
+      <soap12:operation soapAction="http://tempuri.org/LogDeviceConfigAction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveDevicePendingApproval">
+      <soap12:operation soapAction="http://tempuri.org/ApproveDevicePendingApproval" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDeviceConfig">
+      <soap12:operation soapAction="http://tempuri.org/UpdateDeviceConfig" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeviceConfigActionByFilters">
+      <soap12:operation soapAction="http://tempuri.org/GetDeviceConfigActionByFilters" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerActionByFilters">
+      <soap12:operation soapAction="http://tempuri.org/GetServerActionByFilters" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailActionByFilters">
+      <soap12:operation soapAction="http://tempuri.org/GetEmailActionByFilters" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerErrorByFilters">
+      <soap12:operation soapAction="http://tempuri.org/GetServerErrorByFilters" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveUser">
+      <soap12:operation soapAction="http://tempuri.org/SaveUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <soap12:operation soapAction="http://tempuri.org/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllUser">
+      <soap12:operation soapAction="http://tempuri.org/DeleteAllUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserBySurrogateKey">
+      <soap12:operation soapAction="http://tempuri.org/GetUserBySurrogateKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByField">
+      <soap12:operation soapAction="http://tempuri.org/GetUserByField" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUser">
+      <soap12:operation soapAction="http://tempuri.org/GetAllUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalUserCount">
+      <soap12:operation soapAction="http://tempuri.org/GetTotalUserCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveUserPermission">
+      <soap12:operation soapAction="http://tempuri.org/SaveUserPermission" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUserPermission">
+      <soap12:operation soapAction="http://tempuri.org/DeleteUserPermission" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllUserPermission">
+      <soap12:operation soapAction="http://tempuri.org/DeleteAllUserPermission" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPermissionBySurrogateKey">
+      <soap12:operation soapAction="http://tempuri.org/GetUserPermissionBySurrogateKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPermissionByField">
+      <soap12:operation soapAction="http://tempuri.org/GetUserPermissionByField" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUserPermission">
+      <soap12:operation soapAction="http://tempuri.org/GetAllUserPermission" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalUserPermissionCount">
+      <soap12:operation soapAction="http://tempuri.org/GetTotalUserPermissionCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCustomer">
+      <soap12:operation soapAction="http://tempuri.org/SaveCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCustomer">
+      <soap12:operation soapAction="http://tempuri.org/DeleteCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllCustomer">
+      <soap12:operation soapAction="http://tempuri.org/DeleteAllCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerBySurrogateKey">
+      <soap12:operation soapAction="http://tempuri.org/GetCustomerBySurrogateKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerByField">
+      <soap12:operation soapAction="http://tempuri.org/GetCustomerByField" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomer">
+      <soap12:operation soapAction="http://tempuri.org/GetAllCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalCustomerCount">
+      <soap12:operation soapAction="http://tempuri.org/GetTotalCustomerCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDeviceConfig">
+      <soap12:operation soapAction="http://tempuri.org/SaveDeviceConfig" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDeviceConfig">
+      <soap12:operation soapAction="http://tempuri.org/DeleteDeviceConfig" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllDeviceConfig">
+      <soap12:operation soapAction="http://tempuri.org/DeleteAllDeviceConfig" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeviceConfigBySurrogateKey">
+      <soap12:operation soapAction="http://tempuri.org/GetDeviceConfigBySurrogateKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeviceConfigByField">
+      <soap12:operation soapAction="http://tempuri.org/GetDeviceConfigByField" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDeviceConfig">
+      <soap12:operation soapAction="http://tempuri.org/GetAllDeviceConfig" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalDeviceConfigCount">
+      <soap12:operation soapAction="http://tempuri.org/GetTotalDeviceConfigCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDeviceConfigAction">
+      <soap12:operation soapAction="http://tempuri.org/SaveDeviceConfigAction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDeviceConfigAction">
+      <soap12:operation soapAction="http://tempuri.org/DeleteDeviceConfigAction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllDeviceConfigAction">
+      <soap12:operation soapAction="http://tempuri.org/DeleteAllDeviceConfigAction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeviceConfigActionBySurrogateKey">
+      <soap12:operation soapAction="http://tempuri.org/GetDeviceConfigActionBySurrogateKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeviceConfigActionByField">
+      <soap12:operation soapAction="http://tempuri.org/GetDeviceConfigActionByField" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDeviceConfigAction">
+      <soap12:operation soapAction="http://tempuri.org/GetAllDeviceConfigAction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalDeviceConfigActionCount">
+      <soap12:operation soapAction="http://tempuri.org/GetTotalDeviceConfigActionCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDevicePendingApproval">
+      <soap12:operation soapAction="http://tempuri.org/SaveDevicePendingApproval" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDevicePendingApproval">
+      <soap12:operation soapAction="http://tempuri.org/DeleteDevicePendingApproval" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllDevicePendingApproval">
+      <soap12:operation soapAction="http://tempuri.org/DeleteAllDevicePendingApproval" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDevicePendingApprovalBySurrogateKey">
+      <soap12:operation soapAction="http://tempuri.org/GetDevicePendingApprovalBySurrogateKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDevicePendingApprovalByField">
+      <soap12:operation soapAction="http://tempuri.org/GetDevicePendingApprovalByField" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDevicePendingApproval">
+      <soap12:operation soapAction="http://tempuri.org/GetAllDevicePendingApproval" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalDevicePendingApprovalCount">
+      <soap12:operation soapAction="http://tempuri.org/GetTotalDevicePendingApprovalCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveGlobalVariable">
+      <soap12:operation soapAction="http://tempuri.org/SaveGlobalVariable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGlobalVariable">
+      <soap12:operation soapAction="http://tempuri.org/DeleteGlobalVariable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllGlobalVariable">
+      <soap12:operation soapAction="http://tempuri.org/DeleteAllGlobalVariable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalVariableBySurrogateKey">
+      <soap12:operation soapAction="http://tempuri.org/GetGlobalVariableBySurrogateKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalVariableByField">
+      <soap12:operation soapAction="http://tempuri.org/GetGlobalVariableByField" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllGlobalVariable">
+      <soap12:operation soapAction="http://tempuri.org/GetAllGlobalVariable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalGlobalVariableCount">
+      <soap12:operation soapAction="http://tempuri.org/GetTotalGlobalVariableCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveServerAction">
+      <soap12:operation soapAction="http://tempuri.org/SaveServerAction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteServerAction">
+      <soap12:operation soapAction="http://tempuri.org/DeleteServerAction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllServerAction">
+      <soap12:operation soapAction="http://tempuri.org/DeleteAllServerAction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerActionBySurrogateKey">
+      <soap12:operation soapAction="http://tempuri.org/GetServerActionBySurrogateKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerActionByField">
+      <soap12:operation soapAction="http://tempuri.org/GetServerActionByField" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllServerAction">
+      <soap12:operation soapAction="http://tempuri.org/GetAllServerAction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalServerActionCount">
+      <soap12:operation soapAction="http://tempuri.org/GetTotalServerActionCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveServerError">
+      <soap12:operation soapAction="http://tempuri.org/SaveServerError" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteServerError">
+      <soap12:operation soapAction="http://tempuri.org/DeleteServerError" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllServerError">
+      <soap12:operation soapAction="http://tempuri.org/DeleteAllServerError" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerErrorBySurrogateKey">
+      <soap12:operation soapAction="http://tempuri.org/GetServerErrorBySurrogateKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerErrorByField">
+      <soap12:operation soapAction="http://tempuri.org/GetServerErrorByField" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllServerError">
+      <soap12:operation soapAction="http://tempuri.org/GetAllServerError" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalServerErrorCount">
+      <soap12:operation soapAction="http://tempuri.org/GetTotalServerErrorCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveEmailAction">
+      <soap12:operation soapAction="http://tempuri.org/SaveEmailAction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEmailAction">
+      <soap12:operation soapAction="http://tempuri.org/DeleteEmailAction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllEmailAction">
+      <soap12:operation soapAction="http://tempuri.org/DeleteAllEmailAction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailActionBySurrogateKey">
+      <soap12:operation soapAction="http://tempuri.org/GetEmailActionBySurrogateKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailActionByField">
+      <soap12:operation soapAction="http://tempuri.org/GetEmailActionByField" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="http://localhost/Figlut.Aplex.Web.Service/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="http://localhost/Figlut.Aplex.Web.Service/Service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

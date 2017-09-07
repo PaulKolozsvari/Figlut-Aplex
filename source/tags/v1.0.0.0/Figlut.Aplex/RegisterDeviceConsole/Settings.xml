@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--<WebServiceURL>http://localhost/Figlut.Web.Service/Service.asmx</WebServiceURL>-->
+  <WebServiceURL>http://41.76.214.230/Figlut.Web.Service/Service.asmx</WebServiceURL>
+  <DeviceConfigSystemUserName>FiglutSystemUser</DeviceConfigSystemUserName>
+  <DeviceConfigSystemUserPassword>(L!3nT</DeviceConfigSystemUserPassword>
+</Settings>

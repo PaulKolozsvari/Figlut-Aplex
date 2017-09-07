@@ -1,0 +1,62 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Figlut.Aplex.Web.Data.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="FiglutConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=ZAPKOLOZ\SQL2008STANDARD;Initial Catalog=Figlut;Persist Security Info=True;User ID=FiglutUser;Password=(L!3nT&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=ZAPKOLOZ\SQL2008STANDARD;Initial Catalog=Figlut;Persist Security Info=True;User ID=FiglutUser;Password=(L!3nT</Value>
+    </Setting>
+    <Setting Name="DataSourceConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=ZAPKOLOZ\SQL2008STANDARD;Persist Security Info=True;User ID=FiglutUser;Password=(L!3nT&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=ZAPKOLOZ\SQL2008STANDARD;Persist Security Info=True;User ID=FiglutUser;Password=(L!3nT</Value>
+    </Setting>
+    <Setting Name="FiglutConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=PAULKOLOZSVD2AE\SQL2008STANDARD;Initial Catalog=Figlut;Persist Security Info=True;User ID=FiglutUser;Password=password&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=PAULKOLOZSVD2AE\SQL2008STANDARD;Initial Catalog=Figlut;Persist Security Info=True;User ID=FiglutUser;Password=password</Value>
+    </Setting>
+    <Setting Name="FiglutFiglutConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=PAULKOLOZSVD2AE\SQL2008STANDARD;Initial Catalog=FiglutFiglut;Persist Security Info=True;User ID=FiglutFiglutUser;Password=password&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=PAULKOLOZSVD2AE\SQL2008STANDARD;Initial Catalog=FiglutFiglut;Persist Security Info=True;User ID=FiglutFiglutUser;Password=password</Value>
+    </Setting>
+    <Setting Name="FiglutFiglutConnectionString1" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=localhost\SQL2008STANDARD;Initial Catalog=FiglutFiglut;Persist Security Info=True;User ID=FiglutFiglutUser;Password=password&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=localhost\SQL2008STANDARD;Initial Catalog=FiglutFiglut;Persist Security Info=True;User ID=FiglutFiglutUser;Password=password</Value>
+    </Setting>
+    <Setting Name="FiglutFiglutConnectionString2" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=PAULKOLOZSVD2AE\SQL2008STANDARD;Initial Catalog=FiglutFiglut;Persist Security Info=True;User ID=FiglutFiglutUser;Password=password&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=PAULKOLOZSVD2AE\SQL2008STANDARD;Initial Catalog=FiglutFiglut;Persist Security Info=True;User ID=FiglutFiglutUser;Password=password</Value>
+    </Setting>
+    <Setting Name="FiglutAplexConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=PAULKOLOZSVD2AE\SQL2008STANDARD;Initial Catalog=FiglutAplex;Persist Security Info=True;User ID=FiglutAplexUser;Password=password&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=PAULKOLOZSVD2AE\SQL2008STANDARD;Initial Catalog=FiglutAplex;Persist Security Info=True;User ID=FiglutAplexUser;Password=password</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

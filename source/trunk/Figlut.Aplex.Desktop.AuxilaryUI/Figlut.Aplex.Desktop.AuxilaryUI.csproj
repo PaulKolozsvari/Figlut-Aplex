@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{77149E76-BAC0-4DD4-905A-2D45B5BC0225}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Figlut.Aplex.Desktop.AuxilaryUI</RootNamespace>
+    <AssemblyName>Figlut.Aplex.Desktop.AuxilaryUI</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerForm.Designer.cs">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ApproveDeviceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ApproveDeviceForm.Designer.cs">
+      <DependentUpon>ApproveDeviceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalServerSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GlobalServerSettingsForm.designer.cs">
+      <DependentUpon>GlobalServerSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogViewerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogViewerForm.designer.cs">
+      <DependentUpon>LogViewerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageCustomersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageCustomersForm.Designer.cs">
+      <DependentUpon>ManageCustomersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageDevicesPendingApprovalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageDevicesPendingApprovalForm.Designer.cs">
+      <DependentUpon>ManageDevicesPendingApprovalForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageUsersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageUsersForm.designer.cs">
+      <DependentUpon>ManageUsersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelectCustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectCustomerForm.Designer.cs">
+      <DependentUpon>SelectCustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectDateRangeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectDateRangeForm.Designer.cs">
+      <DependentUpon>SelectDateRangeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserAdditionalInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserAdditionalInfoForm.designer.cs">
+      <DependentUpon>UserAdditionalInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForm.designer.cs">
+      <DependentUpon>UserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserPermissionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserPermissionsForm.Designer.cs">
+      <DependentUpon>UserPermissionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewDeviceConfigActionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewDeviceConfigActionsForm.Designer.cs">
+      <DependentUpon>ViewDeviceConfigActionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewEmailActionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewEmailActionsForm.Designer.cs">
+      <DependentUpon>ViewEmailActionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewServerErrorsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewServerErrorsForm.Designer.cs">
+      <DependentUpon>ViewServerErrorsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewServerActionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewServerActionsForm.Designer.cs">
+      <DependentUpon>ViewServerActionsForm.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustomerForm.resx">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ApproveDeviceForm.resx">
+      <DependentUpon>ApproveDeviceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GlobalServerSettingsForm.resx">
+      <DependentUpon>GlobalServerSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogViewerForm.resx">
+      <DependentUpon>LogViewerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageCustomersForm.resx">
+      <DependentUpon>ManageCustomersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageDevicesPendingApprovalForm.resx">
+      <DependentUpon>ManageDevicesPendingApprovalForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageUsersForm.resx">
+      <DependentUpon>ManageUsersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectCustomerForm.resx">
+      <DependentUpon>SelectCustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectDateRangeForm.resx">
+      <DependentUpon>SelectDateRangeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserAdditionalInfoForm.resx">
+      <DependentUpon>UserAdditionalInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForm.resx">
+      <DependentUpon>UserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserPermissionsForm.resx">
+      <DependentUpon>UserPermissionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewDeviceConfigActionsForm.resx">
+      <DependentUpon>ViewDeviceConfigActionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewEmailActionsForm.resx">
+      <DependentUpon>ViewEmailActionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewServerErrorsForm.resx">
+      <DependentUpon>ViewServerErrorsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewServerActionsForm.resx">
+      <DependentUpon>ViewServerActionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Figlut.Aplex.Desktop.Data\Figlut.Aplex.Desktop.Data.csproj">
+      <Project>{552CA267-FDD3-43F6-8081-DA4A727F5530}</Project>
+      <Name>Figlut.Aplex.Desktop.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Figlut.Desktop.BaseForms\Figlut.Desktop.BaseForms.csproj">
+      <Project>{296C800D-7340-4F02-BA01-E2E4305DCB27}</Project>
+      <Name>Figlut.Desktop.BaseForms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Figlut.Desktop.Controls\Figlut.Desktop.Controls.csproj">
+      <Project>{96F62BF6-FA7D-4989-A6D6-47A508FCE136}</Project>
+      <Name>Figlut.Desktop.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Figlut.Desktop.Data\Figlut.Desktop.Data.csproj">
+      <Project>{E56EC9A2-D1AA-463B-877D-5F2837C44738}</Project>
+      <Name>Figlut.Desktop.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Figlut.Desktop.Utilities\Figlut.Desktop.Utilities.csproj">
+      <Project>{B90C6532-4A5A-4BE2-89B8-024EC4E24239}</Project>
+      <Name>Figlut.Desktop.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DeviceConfigSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <LogFileName>Log.txt</LogFileName>
+  <UseCellularConnection>true</UseCellularConnection>
+  <ApplicationWebServiceUrl>http://10.211.55.8/Paramount.VisitUs.Web.Service/Service.asmx</ApplicationWebServiceUrl>
+  <ApplicationReplicationWebServiceUrl></ApplicationReplicationWebServiceUrl>
+  <!--<FiglutWebServiceUrl>http://10.211.55.8/Figlut.Aplex.Web.Service/Service.asmx</FiglutWebServiceUrl>-->
+  <FiglutWebServiceUrl>http://www.figlut.com/Figlut.Aplex.Web.Service/Service.asmx</FiglutWebServiceUrl>
+</DeviceConfigSettings>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <DeviceConfigSystemUserName>FiglutSystemUser</DeviceConfigSystemUserName>
+  <DeviceConfigSystemUserPassword>(L!3nT</DeviceConfigSystemUserPassword>
+  <GMailSMTPServer>smtp.gmail.com</GMailSMTPServer>
+  <GMailSMTPPort>587</GMailSMTPPort>
+  <GMailUserName>Figlut.Team@figlut.com</GMailUserName>
+  <GMailPassword>F!gl3tT3@m</GMailPassword>
+  <FromName>Figlut Team</FromName>
+  <FromEmailAddress>Figlut.Team@figlut.com</FromEmailAddress>
+  <DevicePendingApprovalNotificationSubject>Figlut Aplex - Device Pending Approval</DevicePendingApprovalNotificationSubject>
+</Settings>
